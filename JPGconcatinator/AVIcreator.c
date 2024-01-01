@@ -327,7 +327,7 @@ AVI_error_t AVIAttachFrame(FILE_AVI_t* file, const DATA_PTR* data, size_t len) {
 	//check for autosave:
 	if (file->FBSC) {
 		--file->FBS;
-		if (file->FBS = 0) {
+		if (file->FBS == 0) {
 			file->FBS = file->FBSC;
 			//store recent data:
 			AVISyncFile(file);
