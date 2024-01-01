@@ -1,0 +1,164 @@
+#include "AVIconcatinator.h"
+
+
+
+//LIL endian!
+
+//AVI structures:
+//https://xoax.net/sub_web/ref_dev/fileformat_avi/
+//https://github.com/s60sc/ESP32-CAM_MJPEG2SD/blob/master/mjpeg2sd.cpp
+//https://cdn.hackaday.io/files/274271173436768/avi.pdf
+//https://learn.microsoft.com/en-us/windows/win32/directshow/avi-riff-file-reference
+//http://www.jmcgowan.com/avitech.html
+
+typedef struct {
+	uint32_t RIFFID;
+	uint32_t filesize;
+	uint32_t FORMAT;
+}H_RIFF;
+
+typedef struct {
+	uint32_t LISTID;
+	uint32_t length;
+	uint32_t HEADERID;
+}H_LIST;
+
+typedef struct {
+	uint32_t AVIID;
+	uint32_t length;
+}H_AVI;
+
+typedef struct {
+	uint32_t usPerFrame;
+	uint32_t maxBytePerFrame;
+	uint32_t paddingGranular; //padd chunks to this value
+	uint32_t flags;
+	uint32_t totalFrames;	//chunks of data
+	uint32_t initialFrames;	//0
+	uint32_t streams;		//1
+	uint32_t bufSugSize;	//0 for jpeg
+	uint32_t width;			
+	uint32_t height;
+	uint32_t RES2[4];
+}H_AVI_MAIN;
+
+typedef struct {
+	uint32_t LISTID;		//LIST
+	uint32_t listSize;
+	uint32_t LISTSTREAM;	//strl
+	uint32_t HEADERSTREM;	//strh
+	uint32_t headerSize;
+}VID_S_LIST;
+
+typedef struct {
+	uint32_t TYPE;			//vids
+	uint32_t handler;		//0
+	uint32_t flags;			//0
+	uint32_t priority;		//0
+	uint32_t audioVideoShift;//0
+	uint32_t scale;			//1000 //my guess: in ms
+	uint32_t rate;			//rate/scale?
+	uint32_t START;			//0
+	uint32_t vidLength;
+	uint32_t BufferSize;	//larger than the largest chunk... 0 if unknown... I would put 0 here to ease
+	uint32_t quality;		//0
+	uint32_t aSampleSize;	//0
+	uint32_t cornerTL;		//2x 16 bit
+	uint32_t cornerBR;		//2x 16 bit
+	uint32_t STREAMFORMAT;	//strf
+	uint32_t sizeFormat;	// 40
+}VID_S_HEADER;
+
+typedef struct {
+	uint32_t SIZE;			//0x40
+	uint32_t width;
+	uint32_t height;		//0
+	uint16_t PLANES;		//1
+	uint16_t BITPERPIXEL;	//??
+	uint32_t COMPRESSION;	//jpeg -> number?
+	uint32_t imageSize;		
+	uint32_t xPixPerM;		//0
+	uint32_t yPixPerM;		//0
+	uint32_t colorsUsed;	//0
+	uint32_t colorsReq;		//0
+}VID_S_FORMAT; //bitmapinfoheader
+
+//AUDIO
+
+typedef struct {
+	uint32_t LISTID;		//LIST
+	uint32_t listSize;
+	uint32_t LISTSTREAM;	//strl
+	uint32_t HEADERSTREM;	//strh
+	uint32_t headerSize;
+}AUD_S_LIST;
+
+typedef struct {
+	uint32_t TYPE;			//vids
+	uint32_t handler;		//0
+	uint32_t flags;			//0
+	uint32_t priority;		//0
+	uint32_t audioVideoShift;//0
+	uint32_t scale;			//1000 //my guess: in ms
+	uint32_t rate;			//rate/scale?
+	uint32_t START;			//0
+	uint32_t vidLength;
+	uint32_t BufferSize;	//larger than the largest chunk... 0 if unknown... I would put 0 here to ease
+	uint32_t quality;		//0
+	uint32_t aSampleSize;	//0
+	uint32_t cornerTL;		//2x 16 bit
+	uint32_t cornerBR;		//2x 16 bit
+	uint32_t STREAMFORMAT;	//strf
+	uint32_t sizeFormat;	// 40
+}VID_S_HEADER;
+
+//GENERAL
+
+typedef struct {
+
+
+} RIFF_CHUNK;
+
+
+
+
+
+
+uint16_t AVIOpenNew(FILE_AVI_t * file,const char* path) {
+	FILE* plik = fopen(path, "wb");
+
+	if (plik == 0) {
+		return 1;
+	}
+	file->buffer = (char*)malloc();
+	if (file->buffer == 0) {
+		return 1;
+	}
+	setvbuf(plik, file->buffer, _IOFBF, AVI_FILE_BUF_SIZE);
+	//the file is ready at this point.
+		//prepare the file structure.
+
+
+
+
+
+	//save important data
+	file->size = 0;
+	file->plik = plik;
+
+	return 0;
+}
+
+//czy musze wiedzieæ czy to jest pocz¹tek kolejnej ramki? To niewa¿ne, i tak ca³a na raz powinna wejœæ
+uint16_t AVIAttachFrame(FILE_AVI_t* file, const DATA_PTR* data, size_t len) {
+
+	return 0;
+}
+
+
+uint16_t AVIClose(FILE_AVI_t* file) {
+
+	if (file->buffer)
+		free(file->buffer);
+	return 0;
+}

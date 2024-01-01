@@ -1,0 +1,23 @@
+﻿  AVIcreator.c
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(97,9): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(97,9): message : consider using '%zd' in the format string
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(98,9): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(98,9): message : consider using '%zd' in the format string
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(99,9): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(99,9): message : consider using '%zd' in the format string
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(100,9): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(100,9): message : consider using '%zd' in the format string
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(101,9): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(101,9): message : consider using '%zd' in the format string
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(102,9): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(102,9): message : consider using '%zd' in the format string
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(103,9): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(103,9): message : consider using '%zd' in the format string
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(186,10): warning C4098: 'AVIPopulateHeaderFromFields': 'void' function returning a value
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(191,30): warning C4133: 'function': incompatible types - from 'HEADER_AVI *' to 'char *'
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(213,32): warning C4244: '=': conversion from 'float' to 'uint32_t', possible loss of data
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(219,38): warning C4244: '=': conversion from 'float' to 'uint32_t', possible loss of data
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(325,20): warning C4267: '+=': conversion from 'size_t' to 'uint32_t', possible loss of data
+M:\Programowanie\VisualStudio\JPGtoAVI\JPGconcatinator\AVIcreator.c(312,13): warning C4267: 'initializing': conversion from 'size_t' to 'uint32_t', possible loss of data
+  JPGconcatinator.cpp
+  JPGconcatinator.vcxproj -> M:\Programowanie\VisualStudio\JPGtoAVI\x64\Debug\JPGconcatinator.exe
